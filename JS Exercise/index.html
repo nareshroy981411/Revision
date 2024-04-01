@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Server API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-card {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="text"], input[type="tel"] {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            width: calc(100% - 16px);
+        }
+        input[type="text"]:focus, input[type="tel"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        #getOutput {
+            margin-top: 20px;
+            white-space: pre;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Server API</h1>
+
+    <div class="form-container">
+        <!-- POST Method -->
+        <div class="form-card">
+            <h2>POST Method</h2>
+            <form id="postForm" onsubmit="event.preventDefault(); postItem()">
+                <label for="itemName">Item Name:</label>
+                <input type="text" id="itemName" name="itemName" required>
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+
+        <!-- PUT Method -->
+        <div class="form-card">
+            <h2>PUT Method</h2>
+            <form id="putForm" onsubmit="event.preventDefault(); putItem()">
+                <label for="itemId">Item ID:</label>
+                <input type="tel" id="itemId" name="itemId" required>
+                <label for="newName">New Name:</label>
+                <input type="text" id="newName" name="newName" required>
+                <button type="submit">Update Item</button>
+            </form>
+        </div>
+
+        <!-- DELETE Method -->
+        <div class="form-card">
+            <h2>DELETE Method</h2>
+            <form id="deleteForm" onsubmit="event.preventDefault(); deleteItem()">
+                <label for="deleteId">Item ID to Delete:</label>
+                <input type="tel" id="deleteId" name="deleteId" required>
+                <button type="submit">Delete Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- GET Method -->
+    <h2>GET Method</h2>
+    <button onclick="getItems()">Get Items</button>
+    <div id="getOutput"></div>
+
+    <script src="./server.js"></script>
+</body>
+</html>
